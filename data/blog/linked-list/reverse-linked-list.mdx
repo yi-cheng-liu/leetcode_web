@@ -1,0 +1,47 @@
+---
+title: Reverse Linked List
+date: '2022-07-25'
+tags: ['linked-list']
+difficulty: 'Easy'
+draft: false
+layout: PostSimple
+summary: The scenic lands of Canada featuring maple leaves, snow-capped mountains, turquoise lakes and Toronto. Take in the sights in this photo gallery exhibition and see how easy it is to replicate with some MDX magic and tailwind classes.
+---
+
+Leetcode: https://leetcode.com/problems/reverse-linked-list/
+
+<div className="grid grid-cols-5">
+  <div className="col-span-3">
+    ```c
+    /**
+    * Definition for singly-linked list.
+    * struct ListNode {
+    *     int val;
+    *     ListNode *next;
+    *     ListNode() : val(0), next(nullptr) {}
+    *     ListNode(int x) : val(x), next(nullptr) {}
+    *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+    * };
+    */
+    class Solution {
+    public:
+        ListNode* reverseList(ListNode* head) {
+            ListNode* next;
+            ListNode* cur = head;
+            ListNode* prev = nullptr;
+            while(cur != nullptr){
+                next = cur->next;
+                cur->next = prev;
+                prev = cur;
+                cur = next;
+            }
+            return prev;
+        }
+    };
+    ```
+  </div>
+  <div className="col-span-2">
+    ![reverse-linked-list](/static/images/linked-list/reverse-linked-list.gif)
+  </div>
+</div>
+
