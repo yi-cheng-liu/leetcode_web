@@ -5,6 +5,7 @@ import type { Blog } from 'contentlayer/generated'
 import Comments from '@/components/Comments'
 import Link from '@/components/Link'
 import PageTitle from '@/components/PageTitle'
+import Difficulty from '@/components/Difficulty'
 import Tag from '@/components/Tag'
 import SectionContainer from '@/components/SectionContainer'
 import siteMetadata from '@/data/siteMetadata'
@@ -26,7 +27,7 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
       <article>
         <div>
           <header>
-            <div className="space-y-1 border-b border-gray-200 pb-10 text-center dark:border-gray-700">
+            <div className="space-y-1 border-b border-gray-200 pb-6 text-center dark:border-gray-700">
               <dl>
                 <div>
                   <dt className="sr-only">Published on</dt>
@@ -38,11 +39,13 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
               <div>
                 <PageTitle>{title}</PageTitle>
               </div>
-              <div className="text-lg text-green-600">{difficulty}</div>
+              <div>
+                <Difficulty>{difficulty}</Difficulty>
+              </div>
               {tags && (
-                <div>
+                <div className="flex justify-center gap-3">
                   {tags.map((tag) => (
-                    <Tag key={tag} text={tag} />
+                      <Tag key={tag} text={tag} />
                   ))}
                 </div>
               )}
@@ -50,7 +53,7 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
           </header>
           <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:divide-y-0">
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
-              <div className="prose max-w-none pb-8 pt-10 dark:prose-invert">{children}</div>
+              <div className="prose max-w-none pb-8 pt-6 dark:prose-invert">{children}</div>
             </div>
             {/* {siteMetadata.comments && (
               <div className="pb-6 pt-6 text-center text-gray-700 dark:text-gray-300" id="comment">

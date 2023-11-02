@@ -130,7 +130,7 @@ export default function ListLayout({
                           {title}
                         </Link>
                       </h3>
-                      <div className="flex flex-wrap">
+                      <div className="flex justify-center">
                         {tags?.map((tag) => <Tag key={tag} text={tag} />)}
                       </div>
                     </div>
