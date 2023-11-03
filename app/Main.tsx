@@ -43,7 +43,7 @@ export default function Home({ posts }) {
                               {title}
                             </Link>
                           </h2>
-                          <div className="flex flex-wrap">
+                          <div className="flex gap-3">
                             {tags.map((tag) => (
                               <Tag key={tag} text={tag} />
                             ))}
