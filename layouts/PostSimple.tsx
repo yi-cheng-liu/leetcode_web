@@ -45,7 +45,7 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
               {tags && (
                 <div className="flex justify-center gap-3">
                   {tags.map((tag) => (
-                      <Tag key={tag} text={tag} />
+                    <Tag key={tag} text={tag} />
                   ))}
                 </div>
               )}
