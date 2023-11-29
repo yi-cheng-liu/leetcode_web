@@ -10,31 +10,85 @@ layout: PostSimple
 
 ## Overview
 
+Types of Linked Lists:
+1. Singly Linked List: Each node points to the next node in the list.
+2. Doubly Linked List: Each node has references to both the next and the previous nodes.
+3. Circular Linked List: The last node points back to the first node, creating a closed loop.
+
+### Common Operation
+
+<div className="grid grid-cols-2 gap-4">
+  <div className="col-span-1">
+    **Prepend** (Insertion at the Beginning): O(1)
+    ```c
+    void prepend(Node*& head, int data) {
+        Node* newNode = new Node(data);
+        newNode->next = head;
+        head = newNode;
+    }
+    ```
+  </div>
+  <div className="col-span-1">
+    **Append** (Insertion at the End): O(n)
+    ```c
+    void append(Node*& head, int data) {
+        Node* newNode = new Node(data);
+        // If the list is empty, make the new node as head
+        if (head == nullptr) {
+            head = newNode;
+            return;
+        }
+        Node* current = head;
+        while (current->next != nullptr) {
+            current = current->next;
+        }
+        current->next = newNode;
+    }
+    ```
+  </div>
+</div>
+
+{/* <div className="grid grid-cols-2 gap-4">
+  <div className="col-span-1">
+    **Prepend** (Insertion at the Beginning): O(1)
+    ```c
+
+    ```
+  </div>
+  <div className="col-span-1">
+    **Append** (Insertion at the End): O(n)
+    ```c
+    ```
+  </div>
+</div> */}
+
+
+
 {/* <TOCInline toc={props.toc} exclude="Overview"/> */}
 
-| <h2>Basic</h2>                                                                              | Done | Neetcode | 知乎 | 代碼隨想錄  |
-|:--------------------------------------------------------------------------------------------|:----:|:--------:|:---:|:---------:|
-| [707. Design Linked List](/blog/linked-list/design-linked-list)                             |  ✅  |          |     |     ✔     |
-| [206. Reverse Linked List](/blog/linked-list/reverse-linked-list)                           |  ✅  |    ✔     |  ✔  |     ✔     |
-| [92. Reverse Linked List II](/blog/linked-list/reverse-linked-list-ii)                      |  ✅  |    ✔     |  ✔  |           |
-| [25. Reverse Nodes in k-Group](/blog/linked-list/reverse-nodes-in-k-group)                  |  ✅  |    ✔     |  ✔  |           |
-| [21. Merge Two Sorted Lists](/blog/linked-list/merge-two-sorted-lists)                      |  ✅  |    ✔     |     |           |
-| [143. Reorder List](/blog/linked-list/reorder-list) (Find middle + reverse + merge)         |  ✅  |    ✔     |     |           |
-| [23. Merge k Sorted Lists](/blog/linked-list/merge-k-sorted-lists)                          |  ✅  |    ✔     |     |           |
-| <h2>Remove, swap, copy</h2>                                                                 |      |          |     |           |
-| [203. Remove Linked List Elements](/blog/linked-list/remove-linked-list-element)            |  ✅  |    ✔     |     |     ✔     |
-| [19. Remove Nth Node From End of List](/blog/linked-list/remove-nth-node-from-end-of-list)  |  ✅  |    ✔     |     |     ✔     |
-| [24. Swap Nodes in Pairs](/blog/linked-list/swap-nodes-in-pairs)                            |  ✅  |    ✔     |     |     ✔     |
-| [138. Copy List with Random Pointer](/blog/linked-list/copy-list-with-random-pointer)       |  ✅  |    ✔     |     |           |
-| <h2>Fast & Slow pointers</h2>                                                               |      |          |     |           |
-| [141. Linked List Cycle](/blog/linked-list/remove-nth-node-from-end-of-list)                |  ✅  |    ✔     |  ✔  |           |
-| [142. Linked List Cycle II](/blog/linked-list/copy-list-with-random-pointer)                |  ✅  |          |  ✔  |     ✔     |
-| [876. Middle of the Linked List](/blog/linked-list/copy-list-with-random-pointer)           |  ✅  |    ✔     |  ✔  |           |
-| <h2>Cycle</h2>                                                                              |      |          |     |           |
-| [141. Linked List Cycle](/blog/linked-list/remove-nth-node-from-end-of-list)                |  ✅  |    ✔     |     |           |
-| [142. Linked List Cycle II](/blog/linked-list/copy-list-with-random-pointer)                |  ✅  |    ✔     |     |           |
-| [876. Middle of the Linked List](/blog/linked-list/copy-list-with-random-pointer)           |  ✅  |    ✔     |     |           |
-| <h2>Others</h2>                                                                             |      |          |     |           |
-| [Find The Duplicate Number](/blog/linked-list/)                                             |  ✅  |    ✔     |  ✔  |           |
-| [LRU Cache](/blog/linked-list/)                                                             |  ✅  |    ✔     |     |           |
-| [Add Two Numbers](/blog/linked-list/)                                                       |  ✅  |    ✔     |     |           |
+| <h2>Basic</h2>                                                                                        |             Difficulty             | Done | Neetcode | 知乎 | 代碼隨想錄  |
+|:------------------------------------------------------------------------------------------------------|:----------------------------------:|:----:|:--------:|:---:|:---------:|
+| [707. Design Linked List](https://leetcode.com/problems/design-linked-list)                           |<span style="color:green;">Easy</span>|  ✅  |          |     |     ✔     |
+| [206. Reverse Linked List](https://leetcode.com/problems/reverse-linked-list)                         |<span style="color:green;">Easy</span>|  ✅  |    ✔     |  ✔  |     ✔     |
+| [92. Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii)                    |<span style="color:green;">Easy</span>|  ✅  |    ✔     |  ✔  |           |
+| [25. Reverse Nodes in k-Group](https://leetcode.com/problems/reverse-nodes-in-k-group)                |<span style="color:green;">Easy</span>|  ✅  |    ✔     |  ✔  |           |
+| [21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists)                    |<span style="color:green;">Easy</span>|  ✅  |    ✔     |     |           |
+| [143. Reorder List](https://leetcode.com/problems/reorder-list) (Find middle + reverse + merge)       |<span style="color:green;">Easy</span>|  ✅  |    ✔     |     |           |
+| [23. Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists)                        |<span style="color:green;">Easy</span>|  ✅  |    ✔     |     |           |
+| <h2>Remove, swap, copy</h2>                                                                           |<span style="color:green;">Easy</span>|      |          |     |           |
+| [203. Remove Linked List Elements](https://leetcode.com/problems/remove-linked-list-elements)         |<span style="color:green;">Easy</span>|  ✅  |    ✔     |     |     ✔     |
+| [19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list)|<span style="color:green;">Easy</span>|  ✅  |    ✔     |     |     ✔     |
+| [24. Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs)                          |<span style="color:green;">Easy</span>|  ✅  |    ✔     |     |     ✔     |
+| [138. Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer)     |<span style="color:green;">Easy</span>|  ✅  |    ✔     |     |           |
+| <h2>Fast & Slow pointers</h2>                                                                         |<span style="color:green;">Easy</span>|      |          |     |           |
+| [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle)                             |<span style="color:green;">Easy</span>|  ✅  |    ✔     |  ✔  |           |
+| [142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii)                       |<span style="color:green;">Easy</span>|  ✅  |          |  ✔  |     ✔     |
+| [876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list)             |<span style="color:green;">Easy</span>|  ✅  |    ✔     |  ✔  |           |
+| <h2>Cycle</h2>                                                                                        |<span style="color:green;">Easy</span>|      |          |     |           |
+| [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle)                             |<span style="color:green;">Easy</span>|  ✅  |    ✔     |     |           |
+| [142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii)                       |<span style="color:green;">Easy</span>|  ✅  |    ✔     |     |           |
+| [876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list)             |<span style="color:green;">Easy</span>|  ✅  |    ✔     |     |           |
+| <h2>Others</h2>                                                                                       |<span style="color:green;">Easy</span>|      |          |     |           |
+| [Find The Duplicate Number]()                                                                         |<span style="color:green;">Easy</span>|  ✅  |    ✔     |  ✔  |           |
+| [LRU Cache]()                                                                                         |<span style="color:green;">Easy</span>|  ✅  |    ✔     |     |           |
+| [Add Two Numbers]()                                                                                   |<span style="color:green;">Easy</span>|  ✅  |    ✔     |     |           |
