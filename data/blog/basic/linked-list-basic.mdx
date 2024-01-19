@@ -1,6 +1,6 @@
 ---
 title: 'Linked List Basic'
-date: 2021-08-07T15:32:14Z
+date: 2021-11-02T15:32:14Z
 lastmod: '2023-11-02'
 tags: ['linked-list', 'data-structure']
 draft: false
@@ -11,6 +11,7 @@ layout: PostSimple
 ## Overview
 
 Types of Linked Lists:
+
 1. Singly Linked List: Each node points to the next node in the list.
 2. Doubly Linked List: Each node has references to both the next and the previous nodes.
 3. Circular Linked List: The last node points back to the first node, creating a closed loop.
@@ -48,47 +49,47 @@ Types of Linked Lists:
   </div>
 </div>
 
-{/* <div className="grid grid-cols-2 gap-4">
+{<div className="grid grid-cols-2 gap-4">
+
   <div className="col-span-1">
     **Prepend** (Insertion at the Beginning): O(1)
     ```c
 
     ```
+
   </div>
   <div className="col-span-1">
     **Append** (Insertion at the End): O(n)
     ```c
     ```
   </div>
-</div> */}
-
-
+</div>}
 
 {/* <TOCInline toc={props.toc} exclude="Overview"/> */}
 
-| <h2>Basic</h2>                                                                                        |                            Difficulty                           | Done | Neetcode | 知乎 | 代碼隨想錄  |
-|:------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------:|:----:|:--------:|:---:|:---------:|
-| [707. Design Linked List](https://leetcode.com/problems/design-linked-list)                           |<span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span>|  ✅  |          |     |     ✔     |
-| [206. Reverse Linked List](https://leetcode.com/problems/reverse-linked-list)                         |<span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |    ✔     |  ✔  |     ✔     |
-| [92. Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii)                    |<span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span>|  ✅  |    ✔     |  ✔  |           |
-| [25. Reverse Nodes in k-Group](https://leetcode.com/problems/reverse-nodes-in-k-group)                |<span style={{fontWeight: 'bold', color: 'red'   }}>Hard</span>  |  ✅  |    ✔     |  ✔  |           |
-| [21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists)                    |<span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |    ✔     |     |           |
-| [143. Reorder List](https://leetcode.com/problems/reorder-list) (Find middle + reverse + merge)       |<span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span>|  ✅  |    ✔     |     |           |
-| [23. Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists)                        |<span style={{fontWeight: 'bold', color: 'red'   }}>Hard</span>  |  ✅  |    ✔     |     |           |
-| <h2>Remove, swap, copy</h2>                                                                           |                                                                 |      |          |     |           |
-| [203. Remove Linked List Elements](https://leetcode.com/problems/remove-linked-list-elements)         |<span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |    ✔     |     |     ✔     |
-| [19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list)|<span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span>|  ✅  |    ✔     |     |     ✔     |
-| [24. Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs)                          |<span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span>|  ✅  |    ✔     |     |     ✔     |
-| [138. Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer)     |<span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span>|  ✅  |    ✔     |     |           |
-| <h2>Fast & Slow pointers</h2>                                                                         |                                                                 |      |          |     |           |
-| [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle)                             |<span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |    ✔     |  ✔  |           |
-| [142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii)                       |<span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span>|  ✅  |          |  ✔  |     ✔     |
-| [876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list)             |<span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |    ✔     |  ✔  |           |
-| <h2>Cycle</h2>                                                                                        |                                                                 |      |          |     |           |
-| [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle)                             |<span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |    ✔     |     |           |
-| [142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii)                       |<span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span>|  ✅  |    ✔     |     |           |
-| [876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list)             |<span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |    ✔     |     |           |
-| <h2>Others</h2>                                                                                       |                                                                 |      |          |     |           |
-| [287. Find The Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/)            |<span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span>|  ✅  |    ✔     |  ✔  |           |
-| [146. LRU Cache](https://leetcode.com/problems/lru-cache/description/)                                |<span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span>|  ✅  |    ✔     |     |           |
-| [2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/description/)                      |<span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span>|  ✅  |    ✔     |     |           |
+| <h2>Basic</h2>                                                                                         |                            Difficulty                             | Done | Neetcode | 知乎 | 代碼隨想錄 |
+| :----------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------: | :--: | :------: | :--: | :--------: |
+| [707. Design Linked List](https://leetcode.com/problems/design-linked-list)                            | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |      |     ✔     |
+| [206. Reverse Linked List](https://leetcode.com/problems/reverse-linked-list)                          |  <span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |    ✔    |  ✔  |     ✔     |
+| [92. Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii)                     | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |  ✔  |            |
+| [25. Reverse Nodes in k-Group](https://leetcode.com/problems/reverse-nodes-in-k-group)                 |  <span style={{fontWeight: 'bold', color: 'red'   }}>Hard</span>  |  ✅  |    ✔    |  ✔  |            |
+| [21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists)                     |  <span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |    ✔    |      |            |
+| [143. Reorder List](https://leetcode.com/problems/reorder-list) (Find middle + reverse + merge)        | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| [23. Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists)                         |  <span style={{fontWeight: 'bold', color: 'red'   }}>Hard</span>  |  ✅  |    ✔    |      |            |
+| <h2>Remove, swap, copy</h2>                                                                            |                                                                   |      |          |      |            |
+| [203. Remove Linked List Elements](https://leetcode.com/problems/remove-linked-list-elements)          |  <span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |    ✔    |      |     ✔     |
+| [19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list) | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |     ✔     |
+| [24. Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs)                           | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |     ✔     |
+| [138. Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer)      | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| <h2>Fast & Slow pointers</h2>                                                                          |                                                                   |      |          |      |            |
+| [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle)                              |  <span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |    ✔    |  ✔  |            |
+| [142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii)                        | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |  ✔  |     ✔     |
+| [876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list)              |  <span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |    ✔    |  ✔  |            |
+| <h2>Cycle</h2>                                                                                         |                                                                   |      |          |      |            |
+| [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle)                              |  <span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |    ✔    |      |            |
+| [142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii)                        | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| [876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list)              |  <span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |    ✔    |      |            |
+| <h2>Others</h2>                                                                                        |                                                                   |      |          |      |            |
+| [287. Find The Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/)             | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |  ✔  |            |
+| [146. LRU Cache](https://leetcode.com/problems/lru-cache/description/)                                 | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| [2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/description/)                       | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
