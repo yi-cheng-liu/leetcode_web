@@ -1,31 +1,139 @@
 ---
 title: 'Priority Queue Basic'
 date: 2024-01-18T15:42:14Z
-lastmod: '2023-11-02'
+lastmod: '2024-01-20'
 tags: ['heap', 'priority_queue', 'data-structure']
 draft: false
 summary: 'Heap'
 layout: PostSimple
 ---
 
-| <h2>Maintain Certain Size Array</h2>                                                                                               |                            Difficulty                             | Done | Neetcode | 知乎 | 代碼隨想錄 |
-| :--------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------: | :--: | :------: | :--: | :--------: |
-| [703. Kth Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/description/)                 |  <span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |    ✔    |  ✔  |            |
-| [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)                 | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
-| [973. K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/description/)                           | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |  ✔  |            |
-| [378. Kth Smallest Element in a Sorted Matrix](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/description/) | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |      |            |
-| <h2>Top K</h2>                                                                                                                     |                                                                   |      |          |      |            |
-| [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/description/)                                 | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |      |            |
-| [692. Top K Frequent Words](https://leetcode.com/problems/top-k-frequent-words/description/)                                       | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |      |            |
+## Member Functions
 
-| <h2>Find Final Result</h2> | | | | | |
-| [1046. Last Stone Weight](https://leetcode.com/problems/last-stone-weight/description/) |<span style={{fontWeight: 'bold', color: 'green' }}>Easy</span> | ✅ | ✔ | | |
-| [355. Design Twitter](https://leetcode.com/problems/design-twitter/description/) |<span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span>| ✅ | ✔ | | |
-| <h2>Two Priority Queue</h2> | | | | | |
-| [621. Task Scheduler](https://leetcode.com/problems/task-scheduler/description/) |<span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span>| ✅ | ✔ | | |
-| [295. Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/description/) |<span style={{fontWeight: 'bold', color: 'red'   }}>Hard</span> | ✅ | ✔ | | |
+| Member Function | Function                                                                                                                             |    Member Type    |
+| :-------------: | :----------------------------------------------------------------------------------------------------------------------------------- | :---------------: |
+|     size()      | Returns the number of elements                                                                                                       | unsigned integral |
+|     empty()     | If empty, returns true, returns false if not.                                                                                        |       bool        |
+|     push()      | The element is typically constructed outside the queue, and then a copy of the element is added to the queue.                        |         -         |
+|    emplace()    | The element is constructed directly inside the queue. It takes arguments which are forwarded to the constructor of the element type. |         -         |
+|      pop()      | Remove top element.                                                                                                                  |         -         |
+|      top()      | Returns the top element in priority queue.                                                                                           |         -         |
+|     swap()      | Exchange two contents of two containers. swap(a, b); a.swap(b);                                                                      |         -         |
 
-| <h2></h2> | | | | | |
-| []() |<span style={{fontWeight: 'bold', color: 'green' }}>Easy</span> | ✅ | | | |
-| []() |<span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span>| ✅ | | | |
-| []() |<span style={{fontWeight: 'bold', color: 'red'   }}>Hard</span> | ✅ | | | |
+## Common Operation
+
+<div className="grid grid-cols-2 gap-4">
+  <div className="col-span-2">
+    ```c
+    // Max Heap
+    priority_queue<int> pq;
+    pq.push(10); // [10]
+    pq.push(12); // [12, 10]
+    pq.push(5);  // [12, 10, 5]
+
+    // Max Heap
+    priority_queue<int, vector<int>, greater<int>> pq_ascending;
+    pq_ascending.push(10); // [10]
+    pq_ascending.push(12); // [10, 12]
+    pq_ascending.push(5); // [5, 10, 12]
+
+    // Custom Comparator
+    //  | [{10, 28},
+    //  |  {12, 11},
+    //  |  {24, 33}, ^
+    //  |  {24, 17}, |
+    //  |  {24, 10}, |
+    //  V  {55, 89}]
+    struct compare {
+      bool operator()(const pair<int, int>& a, const pair<int, int>& b) {
+        // If the integers are different, sort by integer in ascending order
+        if (a.first != b.first) {
+            return a.first > b.first;
+        }
+        // If a.first > b.first, it is considered "larger" in terms of priority and is placed later in the queue.
+
+        // If the integers are the same, sort by string in descending order
+        return a.second < b.second;
+      }
+    };
+
+    ```
+
+  </div>
+</div>
+
+## Common Uses Cases
+
+<div className="grid grid-cols-2 gap-4">
+  <div className="col-span-1">
+    <div><strong>215. Kth Largest Element in an Array</strong></div>
+    <div>
+      Given an integer array nums and an integer k, return the kth largest element in the array. <br />
+      Note that it is the kth largest element in the sorted order.
+      
+      Can you solve it without sorting?
+    </div>
+    
+    <blockquote>
+      Example 1:<br />
+      Input: nums = [3,2,1,5,6,4], k = 2<br />
+      Output: 5<br />
+      The 2nd largest element in the array is 5. 
+    </blockquote>
+    <blockquote>
+      Example 2:<br />
+      Input: nums = [3,2,3,1,2,4,5,5,6], k = 4<br />
+      Output: 4<br />
+      The 4th largest element in the array is 4. 
+    </blockquote>
+  </div>
+  <div className="col-span-1">
+    ```c
+      class Solution {
+      public:
+          int findKthLargest(vector<int>& nums, int k) {
+              priority_queue<int, vector<int>, greater<int>> pq;
+
+              for (const int& num : nums) {
+                  if (pq.size() < k) {
+                      pq.push(num);
+                  }
+                  else {
+                      if (num > pq.top()) {
+                          pq.pop();
+                          pq.push(num);
+                      }
+                  }
+              }
+              return pq.top();
+          }
+
+        };
+      ```
+
+  </div>
+</div>
+
+| <h2>Maintain Certain Size Array</h2>                                                                                                                  |                            Difficulty                             | Done | Neetcode | 知乎 | 代碼隨想錄 |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------: | :--: | :------: | :--: | :--------: |
+| [703. Kth Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/description/)                                    |  <span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |    ✔    |  ✔  |            |
+| [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)                                    | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| [973. K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/description/)                                              | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |  ✔  |            |
+| [378. Kth Smallest Element in a Sorted Matrix](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/description/)                    | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |      |            |
+| [1481. Least Number of Unique Integers after K Removals](https://leetcode.com/problems/least-number-of-unique-integers-after-k-removals/description/) | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |      |            |
+| <h2>Top K</h2>                                                                                                                                        |                                                                   |      |          |      |            |
+| [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/description/)                                                    | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |  ✔  |            |
+| [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/description/)                                                    | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |  ✔  |            |
+| <h2>Comparator</h2>                                                                                                                                   |                                                                   |      |          |      |            |
+| [1636. Sort Array by Increasing Frequency](https://leetcode.com/problems/sort-array-by-increasing-frequency/description/)                             |  <span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |          |  ✔  |            |
+| [692. Top K Frequent Words](https://leetcode.com/problems/top-k-frequent-words/description/)                                                          | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |  ✔  |            |
+| <h2>Find Final Result</h2>                                                                                                                            |                                                                   |      |          |      |            |
+| [1748. Sum of Unique Elements](https://leetcode.com/problems/sum-of-unique-elements/description/)                                                     |  <span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |          |  ✔  |            |
+| [1046. Last Stone Weight](https://leetcode.com/problems/last-stone-weight/description/)                                                               |  <span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |    ✔    |      |            |
+| [1167. Minimum Cost to Connect Sticks](https://leetcode.com/problems/minimum-cost-to-connect-sticks/description/)                                     | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |  ✔  |            |
+| <h2>Design</h2>                                                                                                                                       |                                                                   |      |          |      |            |
+| [355. Design Twitter](https://leetcode.com/problems/design-twitter/description/)                                                                      | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| <h2>Two Priority Queue</h2>                                                                                                                           |                                                                   |      |          |      |            |
+| [621. Task Scheduler](https://leetcode.com/problems/task-scheduler/description/)                                                                      | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| [621. Task Scheduler II](https://leetcode.com/problems/task-scheduler-ii/description/)                                                                | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |      |            |
+| [295. Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/description/)                                          |  <span style={{fontWeight: 'bold', color: 'red'   }}>Hard</span>  |  ✅  |    ✔    |      |            |

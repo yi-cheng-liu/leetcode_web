@@ -1,0 +1,79 @@
+---
+title: 'Backtracking'
+date: 2024-01-20T15:42:14Z
+lastmod: '2024-01-20'
+tags: ['backtracking', 'algorithm']
+draft: false
+summary: 'Heap'
+layout: PostSimple
+---
+
+{/* ## Common Operation
+
+<div className="grid grid-cols-2 gap-4">
+  <div className="col-span-2">
+    ```c
+
+    ```
+
+  </div>
+</div> */}
+
+## Common Uses Cases
+
+<div className="grid grid-cols-2 gap-4">
+  <div className="col-span-1">
+    <div><strong>78. Subsets</strong></div>
+    <div>
+      Given an integer array nums of unique elements, return all possible subsets.
+      
+      The solution set must not contain duplicate subsets. Return the solution in any order.
+    </div>
+    
+    <blockquote>
+      Example 1:<br />
+      Input: nums = [1,2,3]<br />
+      Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+    </blockquote>
+  </div>
+  <div className="col-span-1">
+    ```c
+      class Solution {
+      public:
+          vector<vector<int>> subsets(vector<int>& nums) {
+              vector<vector<int>> result;
+              vector<int> cur;
+              dfs(nums, 0, cur, result);
+
+              return result;
+          }
+      private:
+          void dfs(vector<int>& nums, int start, vector<int>& cur, vector<vector<int>>& result) {
+              result.push_back(cur);
+              for (int i = start; i < nums.size(); i++) {
+                  cur.push_back(nums[i]);
+                  dfs(nums, i + 1, cur, result);
+                  cur.pop_back();
+              }
+          }
+      };
+      ```
+  </div>
+</div>
+
+[Great Combination of all solutions](https://leetcode.com/problems/combination-sum-ii/solutions/1277764/combination-sum-i-ii-and-iii-subsets-i-and-ii-permutations-i-and-ii-one-stop-c-solutions/)
+
+| <h2>Subset</h2>                                                                                                             |                            Difficulty                             | Done | Neetcode | 知乎 | 代碼隨想錄 |
+| :-------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------: | :--: | :------: | :--: | :--------: |
+| [78. Subsets](https://leetcode.com/problems/subsets/) (All possible subsets given unique elements)                          | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| [90. Subsets II](https://leetcode.com/problems/subsets-ii/) (Given duplicates)                                              | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| [39. Combination Sum](https://leetcode.com/problems/combination-sum/description/) (Combination sum = target, unlimited use) | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| [39. Combination Sum II](https://leetcode.com/problems/combination-sum-ii/description/) (Used once)                         | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| <h2>Permutation</h2>                                                                                                        |                                                                   |      |          |      |            |
+| [46. Permutations](https://leetcode.com/problems/permutations/description/)                                                 | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| [47. Permutations II](https://leetcode.com/problems/permutations-ii/description/)                                           | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |      |          |      |            |
+| [31. Next Permutation](https://leetcode.com/problems/next-permutation/description/)                                         | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |      |          |      |            |
+| <h2></h2>                                                                                                                   |                                                                   |      |          |      |            |
+| []()                                                                                                                        |  <span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |          |      |            |
+| []()                                                                                                                        | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |      |            |
+| []()                                                                                                                        |  <span style={{fontWeight: 'bold', color: 'red'   }}>Hard</span>  |  ✅  |          |      |            |
