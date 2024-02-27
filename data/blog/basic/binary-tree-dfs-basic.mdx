@@ -12,17 +12,61 @@ layout: PostSimple
 
 
 ### Common Operation
-
+**Template**
+```c
+int dfs(TreeNode* node) {
+    if (!node) return someBaseValue; // Base case
+    int left = dfs(node->left);      // Recursive call on left child
+    int right = dfs(node->right);    // Recursive call on right child
+    return combine(left, right);     // Combine results from left and right
+}
+```
 <div className="grid grid-cols-2 gap-4">
   <div className="col-span-1">
-    **Prepend**
+    **111. Minimum Depth of Binary Tree**
     ```c
+    int minDepth(TreeNode* root) {
+        if (!root) return 0;
+
+        int min_left = minDepth(root->left);
+        int min_right = minDepth(root->right);
+        
+        // If both children exist, take the min and add one
+        if (root->left && root->right) {
+            return 1 + min(min_left, min_right);
+        }
+        // If one child is null, adding 1 to the depth of the non-null side
+        // Note: If both are null, this effectively returns 1 for the leaf node
+        else {
+            return 1 + (min_left ? min_left : min_right);
+        }
+    }
     ```
   </div>
   <div className="col-span-1">
-    **Append** (Insertion at the End): O(n)
+    **104. Maximum Depth of Binary Tree**
     ```c
-    
+    int maxDepth(TreeNode* root) {
+        if(!root) return 0;
+
+        int max_left = maxDepth(root->left);
+        int max_right = maxDepth(root->right);
+
+        return 1 + max(max_left, max_right);
+    }
+    ```
+    **559. Maximim Depth of N-ary Tree**
+    ```c
+    int maxDepth(Node* root) {
+        if (!root) return 0;
+        
+        int depth = 0;
+        for (auto child : root->children) {
+            depth = max(depth, maxDepth(child));
+        }
+
+        return 1 + depth;
+    }
     ```
   </div>
 </div>
