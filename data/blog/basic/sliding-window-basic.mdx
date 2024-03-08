@@ -1,0 +1,114 @@
+---
+title: 'Sliding Window Basic'
+date: 2024-03-20T15:42:14Z
+lastmod: '2024-03-20'
+tags: ['sliding-window', 'algorithm']
+draft: false
+summary: 'graph'
+layout: PostSimple
+---
+
+## Common Uses Cases
+
+<div className="grid grid-cols-2 gap-4">
+  <div className="col-span-1">
+    <div><strong>1248. Count Number of Nice Subarrays</strong></div>
+    <div>
+        Given an array of integers nums and an integer k. A continuous subarray is called nice if there are k odd numbers on it.
+
+        Return the number of nice sub-arrays.
+    </div>
+    
+    <blockquote>
+        Input: nums = [1,1,2,1,1], k = 3<br />
+        Output: 2<br />
+        Explanation: The only sub-arrays with 3 odd numbers are [1,1,2,1] and [1,2,1,1].
+    </blockquote>
+  </div>
+  <div className="col-span-1">
+    ```c
+    class Solution {
+    public:
+        int numberOfSubarrays(vector<int>& nums, int k) {
+            int ans = 0, i = 0, count = 0, n = nums.size();
+            for (int j = 0; j < n; j++) {
+                // Identify the odd number
+                if (nums[j] & 1) {
+                    k--;
+                    count = 0;
+                }
+                while (k == 0) {
+                    k += nums[i] & 1;
+                    i++;
+                    count++;
+                }
+                ans += count;
+            }
+
+            return ans;
+        }
+    };
+    ```
+  </div>
+</div>
+
+<div className="grid grid-cols-2 gap-4">
+  <div className="col-span-1">
+    <div><strong>1358. Number of Substrings Containing All Three Characters</strong></div>
+    <div>
+        Given a string s consisting only of characters a, b and c.
+
+        Return the number of substrings containing at least one occurrence of all these characters a, b and c.
+    </div>
+    
+    <blockquote>
+        Input: s = "abcabc"<br />
+        Output: 10<br />
+        Explanation: The substrings containing at least one occurrence of the characters a, b and c are "abc", "abca", "abcab", "abcabc", "bca", "bcab", "bcabc", "cab", "cabc" and "abc" (again). 
+    </blockquote>
+  </div>
+  <div className="col-span-1">
+    ```c
+    class Solution {
+    public:
+        int numberOfSubstrings(string s) {
+            // count of a, b, c
+            int count[3] = {0, 0, 0};
+            int n = s.length();
+            int ans = 0;
+            int i = 0;
+            for (int j = 0; j < n; j++) {
+                count[s[j] - 'a']++;
+                while (count[0] && count[1] && count[2]) {
+                    count[s[i] - 'a']--;
+                    i++;
+                }
+                ans += i;
+            }
+
+            return ans;
+        }
+    };
+    ```
+  </div>
+</div>
+
+Longest Subarray of 1's After Deleting One Element
+Constrained Subsequence Sum
+Binary Subarrays With Sum
+Subarrays with K Different Integers
+Fruit Into Baskets
+Shortest Subarray with Sum at Least K
+Minimum Size Subarray Sum
+
+| <h2>Subarray, Substring</h2>                                                                                                                                             |                            Difficulty                             | Done | Neetcode | 知乎 | 代碼隨想錄 |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------: | :--: | :------: | :--: | :--------: |
+| [1838. Frequency of the Most Frequent Element](https://leetcode.com/problems/frequency-of-the-most-frequent-element/description/)                             | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |      |            |
+| [1004. Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii/)                                                                     | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |      |            |
+| [1248. Count Number of Nice Subarrays](https://leetcode.com/problems/count-number-of-nice-subarrays/description/)                                             | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |      |            |
+| [1358. Number of Substrings Containing All Three Characters](https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/description/) | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |      |            |
+| [1234. Replace the Substring for Balanced String](https://leetcode.com/problems/replace-the-substring-for-balanced-string/description/)                       | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |      |            |
+| <h2>Subset</h2>                                                                                                                                               |                                                                   |      |          |      |            |
+| []()                                                                                                                                                          |  <span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |          |      |            |
+| []()                                                                                                                                                          | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |      |            |
+| []()                                                                                                                                                          |  <span style={{fontWeight: 'bold', color: 'red'   }}>Hard</span>  |  ✅  |          |      |            |
