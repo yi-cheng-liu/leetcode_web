@@ -22,9 +22,8 @@ layout: PostSimple
 
 ## Common Operation
 
-<div className="grid grid-cols-2 gap-4">
-  <div className="col-span-2">
-    ```c
+<div className="flex flex-col lg:flex-row gap-4">
+    ```cpp
     // Max Heap
     priority_queue<int> pq;
     pq.push(10); // [10]
@@ -59,13 +58,12 @@ layout: PostSimple
 
     ```
 
-  </div>
 </div>
 
 ## Common Uses Cases
 
-<div className="grid grid-cols-2 gap-4">
-  <div className="col-span-1">
+<div className="flex flex-col lg:flex-row gap-4">
+  <div className="lg:w-2/5">
     <div><strong>215. Kth Largest Element in an Array</strong></div>
     <div>
       Given an integer array nums and an integer k, return the kth largest element in the array. <br />
@@ -87,8 +85,8 @@ layout: PostSimple
       The 4th largest element in the array is 4. 
     </blockquote>
   </div>
-  <div className="col-span-1">
-    ```c
+  <div className="lg:w-3/5">
+    ```cpp
       class Solution {
       public:
           int findKthLargest(vector<int>& nums, int k) {

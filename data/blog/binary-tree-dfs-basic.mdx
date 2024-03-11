@@ -12,8 +12,8 @@ layout: PostSimple
 
 
 ### Common Operation
-**Template**
-```c
+### Template
+```cpp
 int dfs(TreeNode* node) {
     if (!node) return someBaseValue; // Base case
     int left = dfs(node->left);      // Recursive call on left child
@@ -21,55 +21,126 @@ int dfs(TreeNode* node) {
     return combine(left, right);     // Combine results from left and right
 }
 ```
-<div className="grid grid-cols-2 gap-4">
-  <div className="col-span-1">
-    **111. Minimum Depth of Binary Tree**
-    ```c
-    int minDepth(TreeNode* root) {
-        if (!root) return 0;
 
-        int min_left = minDepth(root->left);
-        int min_right = minDepth(root->right);
-        
-        // If both children exist, take the min and add one
-        if (root->left && root->right) {
-            return 1 + min(min_left, min_right);
-        }
-        // If one child is null, adding 1 to the depth of the non-null side
-        // Note: If both are null, this effectively returns 1 for the leaf node
-        else {
-            return 1 + (min_left ? min_left : min_right);
-        }
-    }
-    ```
+### Depth and Average
+<details>
+<summary>111. Minimum Depth of Binary Tree</summary>
+<blockquote></blockquote>
+<div className="flex flex-col lg:flex-row gap-4">
+  <div className="lg:w-2/5">
+    <div>
+      Given a binary tree, find its minimum depth.
+    </div>
+    
+    <blockquote>
+      ![min depth](https://assets.leetcode.com/uploads/2020/10/12/ex_depth.jpg)
+      Input: root = [3,9,20,null,null,15,7]<br />
+      Output: 2
+    </blockquote>
   </div>
-  <div className="col-span-1">
-    **104. Maximum Depth of Binary Tree**
-    ```c
-    int maxDepth(TreeNode* root) {
-        if(!root) return 0;
+  <div className="lg:w-3/5">
+```cpp
+int minDepth(TreeNode* root) {
+    if (!root) return 0;
 
-        int max_left = maxDepth(root->left);
-        int max_right = maxDepth(root->right);
-
-        return 1 + max(max_left, max_right);
+    int min_left = minDepth(root->left);
+    int min_right = minDepth(root->right);
+    
+    // If both children exist, take the min and add one
+    if (root->left && root->right) {
+        return 1 + min(min_left, min_right);
     }
-    ```
-    **559. Maximim Depth of N-ary Tree**
-    ```c
-    int maxDepth(Node* root) {
-        if (!root) return 0;
-        
-        int depth = 0;
-        for (auto child : root->children) {
-            depth = max(depth, maxDepth(child));
-        }
-
-        return 1 + depth;
+    // If one child is null, adding 1 to the depth of the non-null side
+    // Note: If both are null, this effectively returns 1 for the leaf node
+    else {
+        return 1 + (min_left ? min_left : min_right);
     }
-    ```
+}
+```
   </div>
 </div>
+</details>
+
+<details>
+<summary>104. Maximum Depth of Binary Tree</summary>
+<blockquote>Search right and left</blockquote>
+<div className="flex flex-col lg:flex-row gap-4">
+  <div className="lg:w-2/5">
+    <div>
+    Given the root of a binary tree, return its maximum depth.
+    </div>
+    
+    <blockquote>
+      ![max depth](https://assets.leetcode.com/uploads/2020/11/26/tmp-tree.jpg)
+    </blockquote>
+  </div>
+  <div className="lg:w-3/5">
+```cpp
+int maxDepth(TreeNode* root) {
+    if(!root) return 0;
+
+    int max_left = maxDepth(root->left);
+    int max_right = maxDepth(root->right);
+
+    return 1 + max(max_left, max_right);
+}
+```
+  </div>
+</div>
+</details>
+
+
+
+<details>
+<summary>559. Maximim Depth of N-ary Tree</summary>
+<blockquote>Same as the binary tree, just with n-ary tree. </blockquote>
+<div className="flex flex-col lg:flex-row gap-4">
+  <div className="lg:w-2/5">
+    <div>
+    Given a n-ary tree, find its maximum depth.
+    </div>
+    
+    <blockquote>
+      ![max depth](https://assets.leetcode.com/uploads/2018/10/12/narytreeexample.png)
+    </blockquote>
+  </div>
+  <div className="lg:w-3/5">
+```cpp
+int maxDepth(Node* root) {
+    if (!root) return 0;
+    
+    int depth = 0;
+    for (auto child : root->children) {
+        depth = max(depth, maxDepth(child));
+    }
+
+    return 1 + depth;
+}
+```
+  </div>
+</div>
+</details>
+
+
+{/* <details>
+<summary></summary>
+<blockquote></blockquote>
+<div className="flex flex-col lg:flex-row gap-4">
+  <div className="lg:w-2/5">
+    <div>
+    </div>
+    
+    <blockquote>
+      ![]()
+    </blockquote>
+  </div>
+  <div className="lg:w-3/5">
+```cpp
+```
+  </div>
+</div>
+</details> */}
+
 
 | <h2>Level-Order Traversal</h2>                                                                                                       |                            Difficulty                             | Done | Neetcode | 知乎 | 代碼隨想錄 |
 | :----------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------: | :--: | :------: | :--: | :--------: |

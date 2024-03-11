@@ -10,9 +10,9 @@ layout: PostSimple
 
 {/* ## Common Operation
 
-<div className="grid grid-cols-2 gap-4">
-  <div className="col-span-2">
-    ```c
+<div className="flex flex-col lg:flex-row gap-4">
+  <div className="lg:w-2/5">
+    ```cpp
 
     ```
 
@@ -22,8 +22,8 @@ layout: PostSimple
 ## Common Uses Cases
 <details>
 <summary>78. Subsets</summary>
-  <div className="grid grid-cols-2 gap-4">
-    <div className="col-span-1">
+<div className="flex flex-col lg:flex-row gap-4">
+  <div className="lg:w-2/5">
       <div>
         Given an integer array nums of unique elements, return all possible subsets.
         
@@ -36,8 +36,8 @@ layout: PostSimple
         Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
       </blockquote>
     </div>
-    <div className="col-span-1">
-      ```c
+    <div className="lg:w-3/5">
+      ```cpp
         class Solution {
         public:
             vector<vector<int>> subsets(vector<int>& nums) {

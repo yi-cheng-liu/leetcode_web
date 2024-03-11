@@ -18,52 +18,40 @@ Types of Linked Lists:
 
 ### Common Operation
 
-<div className="grid grid-cols-2 gap-4">
-  <div className="col-span-1">
-    **Prepend** (Insertion at the Beginning): O(1)
-    ```c
-    void prepend(Node*& head, int data) {
-        Node* newNode = new Node(data);
-        newNode->next = head;
-        head = newNode;
-    }
-    ```
+<div className="flex flex-col lg:flex-row gap-4">
+  <div className="lg:w-1/2">
+    <details>
+    <summary>**Prepend** (Insertion at the Beginning): O(1)</summary>
+```cpp
+void prepend(Node*& head, int data) {
+    Node* newNode = new Node(data);
+    newNode->next = head;
+    head = newNode;
+}
+```
+    </details>
   </div>
-  <div className="col-span-1">
-    **Append** (Insertion at the End): O(n)
-    ```c
-    void append(Node*& head, int data) {
-        Node* newNode = new Node(data);
-        // If the list is empty, make the new node as head
-        if (head == nullptr) {
-            head = newNode;
-            return;
-        }
-        Node* current = head;
-        while (current->next != nullptr) {
-            current = current->next;
-        }
-        current->next = newNode;
+  <div className="lg:w-1/2">
+    <details>
+    <summary>**Append** (Insertion at the End): O(n)</summary>
+```cpp
+void append(Node*& head, int data) {
+    Node* newNode = new Node(data);
+    // If the list is empty, make the new node as head
+    if (head == nullptr) {
+        head = newNode;
+        return;
     }
-    ```
+    Node* current = head;
+    while (current->next != nullptr) {
+        current = current->next;
+    }
+    current->next = newNode;
+}
+```
+    </details>
   </div>
 </div>
-
-{<div className="grid grid-cols-2 gap-4">
-
-  <div className="col-span-1">
-    **Prepend** (Insertion at the Beginning): O(1)
-    ```c
-
-    ```
-
-  </div>
-  <div className="col-span-1">
-    **Append** (Insertion at the End): O(n)
-    ```c
-    ```
-  </div>
-</div>}
 
 {/* <TOCInline toc={props.toc} exclude="Overview"/> */}
 

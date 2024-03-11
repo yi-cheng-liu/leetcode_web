@@ -8,21 +8,21 @@ summary: 'graph'
 layout: PostSimple
 ---
 
-DFS Algorithm Pseudo Code
-```c
+## DFS Algorithm Pseudo Code
+```cpp
 void dfs(parameters) {
     process node
     dfs(graph, selected node); // Recursion
     backtrack, undo processing result
 }
 ```
-=======================================================================================================
-<h2>Standard Traversal</h2>
+
+### Standard Traversal
 <details>
 <summary>547. Number of Provinces</summary>
 <blockquote>DFS find the nodes which are connected</blockquote>
-  <div className="grid grid-cols-5 gap-4">
-    <div className="col-span-2">
+<div className="flex flex-col lg:flex-row gap-4">
+  <div className="lg:w-2/5">
       <div>
         A province is a group of directly or indirectly connected cities and no other cities outside of the group.
 
@@ -33,12 +33,12 @@ void dfs(parameters) {
       
       <blockquote>
         ![Number of Province](https://assets.leetcode.com/uploads/2020/12/24/graph1.jpg) <br />
-        Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]] <br />
+        Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
         Output: 2
       </blockquote>
     </div>
-    <div className="col-span-3">
-```c
+  <div className="lg:w-3/5">
+```cpp
 class Solution {
 public:
     int findCircleNum(vector<vector<int>>& isConnected) {
@@ -75,8 +75,8 @@ private:
 <details>
 <summary>797. All Paths From Source to Target</summary>
 <blockquote>DFS/Backtracking find all the possible path from 0 to n-1</blockquote>
-  <div className="grid grid-cols-5 gap-4">
-    <div className="col-span-2">
+<div className="flex flex-col lg:flex-row gap-4">
+  <div className="lg:w-2/5">
       <div>
         Given a directed acyclic graph (DAG) of n nodes labeled from 0 to n - 1, find all possible paths from node 0 to node n - 1 and return them in any order.
 
@@ -89,8 +89,8 @@ private:
         Explanation: There are two paths: 0 -> 1 -> 3 and 0 -> 2 -> 3.
       </blockquote>
     </div>
-    <div className="col-span-3">
-```c
+  <div className="lg:w-3/5">
+```cpp
     class Solution {
     public:
         vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
@@ -120,12 +120,12 @@ private:
   </div>
 </details>
 
-=======================================================================================================
-<h2>BFS</h2>
+
+### BFS
 <details>
 <summary></summary>
-  <div className="grid grid-cols-5 gap-4">
-    <div className="col-span-2">
+<div className="flex flex-col lg:flex-row gap-4">
+  <div className="lg:w-2/5">
       <div>
       </div>
       
@@ -133,15 +133,15 @@ private:
         ![Number of Province](https://assets.leetcode.com/uploads/2020/12/24/graph1.jpg) <br />
       </blockquote>
     </div>
-    <div className="col-span-3">
-```c
+  <div className="lg:w-3/5">
+```cpp
 ```
     </div>
   </div>
 </details>
 
-=======================================================================================================
-<h2>Matrix Graphs</h2>
+
+### Matrix Graphs
 <details>
 <summary>200. Number of Island</summary>
 <blockquote>Find the island, and continue to find more which are neighbors.</blockquote>
@@ -154,8 +154,8 @@ private:
 
 <details>
 <summary>1254. Number of Closed Islands</summary>
-  <div className="grid grid-cols-5 gap-4">
-    <div className="col-span-2">
+<div className="flex flex-col lg:flex-row gap-4">
+  <div className="lg:w-2/5">
       <div>
         Given a 2D grid consists of 0s (land) and 1s (water).  An island is a maximal 4-directionally connected group of 0s and a closed island is an island totally (all left, top, right, bottom) surrounded by 1s.
 
@@ -169,7 +169,7 @@ private:
         Explanation: Islands in gray are closed because they are completely surrounded by water (group of 1s).
       </blockquote>
     </div>
-    <div className="col-span-3">
+  <div className="lg:w-3/5">
 ```cpp
 class Solution {
 public:
@@ -266,8 +266,8 @@ Build 2 visited(atlantic, pacific), and record whether it will reach. <br />
 Start from the boundary and dfs to find the higher land and mark as true. <br />
 Finally, find the common land which can reach both pacific and atlantic.
 </blockquote>
-  <div className="grid grid-cols-5 gap-4">
-    <div className="col-span-2">
+<div className="flex flex-col lg:flex-row gap-4">
+  <div className="lg:w-2/5">
       <div>
         Given an integer matrix heights representing cell heights on an island bordered by the Pacific (left/top edges) and Atlantic (right/bottom edges) Oceans, return grid coordinates where water can flow to both oceans. 
         
@@ -281,7 +281,7 @@ Finally, find the common land which can reach both pacific and atlantic.
         Explanation: The following cells can flow to the Pacific and Atlantic oceans
       </blockquote>
     </div>
-    <div className="col-span-3">
+  <div className="lg:w-3/5">
 ```cpp
 class Solution {
 public:
@@ -330,8 +330,8 @@ private:
   </div>
 </details>
 
-=======================================================================================================
-<h2>Graph Theory</h2>
+
+### Graph Theory
 
 
 

@@ -10,11 +10,13 @@ layout: PostSimple
 
 ## Common Uses Cases
 
+### Subarray, Substring
+
 <details>
 <summary>1248. Count Number of Nice Subarrays</summary>
 <blockquote>Find the first array with k odd numbers, then move i as well to maintain k. </blockquote>
-<div class="flex flex-col md:flex-row gap-4">
-  <div class="md:w-2/5">
+<div className="flex flex-col lg:flex-row gap-4">
+  <div className="lg:w-2/5">
     <div>
         Given an array of integers nums and an integer k. A continuous subarray is called nice if there are k odd numbers on it.
 
@@ -22,13 +24,15 @@ layout: PostSimple
     </div>
     
     <blockquote>
+    <p>
         Input: nums = [1,1,2,1,1], k = 3<br />
         Output: 2<br />
         Explanation: The only sub-arrays with 3 odd numbers are [1,1,2,1] and [1,2,1,1].
+    </p>
     </blockquote>
   </div>
-  <div class="md:w-3/5">
-    ```c
+  <div className="lg:w-3/5">
+    ```cpp
     class Solution {
     public:
         int numberOfSubarrays(vector<int>& nums, int k) {
@@ -58,8 +62,8 @@ layout: PostSimple
 <details>
 <summary>1358. Number of Substrings Containing All Three Characters</summary>
 <blockquote>Use an array then record the 3 characters, then move i as well to maintain all 3. </blockquote>
-<div class="flex flex-col lg:flex-row gap-4">
-  <div class="lg:w-2/5">
+<div className="flex flex-col lg:flex-row gap-4">
+  <div className="lg:w-2/5">
     <div>
         Given a string s consisting only of characters a, b and c.
 
@@ -72,8 +76,8 @@ layout: PostSimple
         Explanation: The substrings containing at least one occurrence of the characters a, b and c are "abc", "abca", "abcab", "abcabc", "bca", "bcab", "bcabc", "cab", "cabc" and "abc" (again). 
     </blockquote>
   </div>
-  <div class="lg:w-3/5">
-    ```c
+  <div className="lg:w-3/5">
+    ```cpp
     class Solution {
     public:
         int numberOfSubstrings(string s) {
@@ -99,6 +103,8 @@ layout: PostSimple
 </div>
 </details>
 
+
+### Subset
 Longest Subarray of 1's After Deleting One Element
 Constrained Subsequence Sum
 Binary Subarrays With Sum
