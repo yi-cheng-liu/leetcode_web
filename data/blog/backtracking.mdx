@@ -37,50 +37,206 @@ layout: PostSimple
       </blockquote>
     </div>
     <div className="lg:w-3/5">
-      ```cpp
-        class Solution {
-        public:
-            vector<vector<int>> subsets(vector<int>& nums) {
-                vector<vector<int>> result;
-                vector<int> cur;
-                dfs(nums, 0, cur, result);
+```cpp
+  class Solution {
+  public:
+      vector<vector<int>> subsets(vector<int>& nums) {
+          vector<vector<int>> result;
+          vector<int> cur;
+          dfs(nums, 0, cur, result);
 
-                return result;
-            }
-        private:
-            void dfs(vector<int>& nums, int start, vector<int>& cur, vector<vector<int>>& result) {
-                result.push_back(cur);
-                for (int i = start; i < nums.size(); i++) {
-                    cur.push_back(nums[i]);
-                    dfs(nums, i + 1, cur, result);
-                    cur.pop_back();
-                }
-            }
-        };
-        ```
+          return result;
+      }
+  private:
+      void dfs(vector<int>& nums, int start, vector<int>& cur, vector<vector<int>>& result) {
+          result.push_back(cur);
+          for (int i = start; i < nums.size(); i++) {
+              cur.push_back(nums[i]);
+              dfs(nums, i + 1, cur, result);
+              cur.pop_back();
+          }
+      }
+  };
+  ```
     </div>
   </div>
 </details>
 
+
+<details>
+<summary>39. Combination Sum</summary>
+<div className="flex flex-col lg:flex-row gap-4">
+  <div className="lg:w-2/5">
+      <div>
+      Find all unique combinations of given numbers that sum up to a target value, allowing repeated use of these numbers.
+      </div>
+      
+      <blockquote>
+      Input: candidates = [2,3,6,7], target = 7 <br />
+      Output: [[2,2,3],[7]] <br />
+      Explanation: <br />
+      2 and 3 are candidates, and 2 + 2 + 3 = 7. Note that 2 can be used multiple times. <br />
+      7 is a candidate, and 7 = 7. <br />
+      These are the only two combinations.
+      </blockquote>
+    </div>
+    <div className="lg:w-3/5">
+```cpp
+class Solution {
+public:
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        vector<vector<int>> ans;
+        vector<int> cur;
+        dfs(candidates, target, ans, cur, 0);
+
+        return ans;
+    }
+private:
+    void dfs(vector<int>& candidates, int target, vector<vector<int>>& ans, vector<int>& cur, int cur_idx) {
+        if (target < 0) return;
+        if (target == 0) {
+            ans.push_back(cur);
+            return;
+        }
+        for (int i = cur_idx; i < candidates.size(); i++) {
+            cur.push_back(candidates[i]);
+            dfs(candidates, target - candidates[i], ans, cur, i);
+            cur.pop_back();
+        }
+    }
+};
+```
+    </div>
+  </div>
+</details>
+
+<details>
+<summary>40. Combination Sum II</summary>
+<div className="flex flex-col lg:flex-row gap-4">
+  <div className="lg:w-2/5">
+      <div>
+      Each number in candidates may only be used once in the combination.
+      </div>
+      
+      <blockquote>
+      Input: candidates = [10,1,2,7,6,1,5], target = 8  <br />
+      Output: [  <br />
+      [1,1,6],  <br />
+      [1,2,5],  <br />
+      [1,7],  <br />
+      [2,6]]
+      </blockquote>
+    </div>
+    <div className="lg:w-3/5">
+```cpp
+class Solution {
+public:
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        sort(candidates.begin(), candidates.end());
+        vector<vector<int>> result;
+        vector<int> cur;
+        dfs(candidates, target, result, cur, 0);
+
+        return result;
+    }
+private:
+    void dfs(vector<int>& candidates, int target, vector<vector<int>>& result, vector<int>& cur, int cur_idx) {
+        if (target < 0) return;
+        if (target == 0) {
+            result.push_back(cur);
+            return;
+        }
+        for (int i = cur_idx; i < candidates.size(); i++) {
+            // to avoid picking up the same combnations 
+            // i.e. we don't pick same element for certain kth position of a combination
+            if (i != cur_idx && candidates[i] == candidates[i-1]) {
+                continue;
+            }
+            cur.push_back(candidates[i]);
+            dfs(candidates, target - candidates[i], result, cur, i+1);
+            cur.pop_back();
+        }
+    }
+};
+```
+    </div>
+  </div>
+</details>
+
+
+<details>
+<summary>216. Combination Sum III</summary>
+<div className="flex flex-col lg:flex-row gap-4">
+  <div className="lg:w-2/5">
+      <div>
+      Find all valid combinations of k numbers that sum up to n such that the following conditions are true:
+
+      Only numbers 1 through 9 are used.
+
+      Each number is used at most once.
+      </div>
+      
+      <blockquote>
+      Input: k = 3, n = 7   <br />
+      Output: [[1,2,4]]   <br />
+      Explanation:   <br />
+      1 + 2 + 4 = 7   <br />
+      There are no other valid combinations.   <br />
+      </blockquote>
+    </div>
+    <div className="lg:w-3/5">
+```cpp
+class Solution {
+public:
+    vector<vector<int>> combinationSum3(int k, int n) {
+        vector<int> candidates = {1,2,3,4,5,6,7,8,9};
+        vector<vector<int>> ans;
+        vector<int> cur;
+        dfs(k, n, ans, cur, candidates, 0);
+
+        return ans;
+    }
+private:
+    void dfs(int k, int n, vector<vector<int>>& ans, vector<int>& cur, vector<int>& candidates, int cur_idx) {
+        if (n < 0) return;
+        if (n == 0 && k == 0) {
+            ans.push_back(cur);
+            return;
+        }
+        for (int i = cur_idx; i < candidates.size(); i++) {
+            cur.push_back(candidates[i]);
+            dfs(k-1, n-candidates[i], ans, cur, candidates, i+1);
+            cur.pop_back();
+        }
+    }
+};
+```
+    </div>
+  </div>
+</details>
+
+
+
 [Great Combination of all solutions](https://leetcode.com/problems/combination-sum-ii/solutions/1277764/combination-sum-i-ii-and-iii-subsets-i-and-ii-permutations-i-and-ii-one-stop-c-solutions/)
 
-| <h2>Subset</h2>                                                                                                             |                            Difficulty                             | Done | Neetcode | 知乎 | 代碼隨想錄 |
-| :-------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------: | :--: | :------: | :--: | :--------: |
-| [78. Subsets](https://leetcode.com/problems/subsets/) (All possible subsets given unique elements)                          | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
-| [90. Subsets II](https://leetcode.com/problems/subsets-ii/) (Given duplicates)                                              | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
-| [39. Combination Sum](https://leetcode.com/problems/combination-sum/description/) (Combination sum = target, unlimited use) | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
-| [39. Combination Sum II](https://leetcode.com/problems/combination-sum-ii/description/) (Used once)                         | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
-| <h2>Permutation</h2>                                                                                                        |                                                                   |      |          |      |            |
-| [46. Permutations](https://leetcode.com/problems/permutations/description/)                                                 | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
-| [47. Permutations II](https://leetcode.com/problems/permutations-ii/description/)                                           | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |      |          |      |            |
-| [31. Next Permutation](https://leetcode.com/problems/next-permutation/description/)                                         | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |      |          |      |            |
-| <h2>Word </h2>                                                                                                              |                                                                   |      |          |      |            |
-| [79. Word Search](https://leetcode.com/problems/word-search/description/) (DFS find the word)                               | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
-| [79. Word Search II](https://leetcode.com/problems/word-search-ii/description/) (DFS find the words with Trie)              | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |      |            |
-| <h2>String</h2>                                                                                                             |                                                                   |      |          |      |            |
-| [131. Palindrome Partitioning](https://leetcode.com/problems/palindrome-partitioning/description/)                          | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
-| [17. Letter Combinations of a Phone Number]()                                                                               | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
-| <h2></h2>                                                                                                                   |                                                                   |      |          |      |            |
-| []()                                                                                                                        |  <span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |          |      |            |
-| []()                                                                                                                        | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |      |            |
-| []()                                                                                                                        |  <span style={{fontWeight: 'bold', color: 'red'   }}>Hard</span>  |  ✅  |          |      |            |
+| <h2>Subset</h2>                                                                                                                |                            Difficulty                             | Done | Neetcode | 知乎 | 代碼隨想錄 |
+| :----------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------: | :--: | :------: | :--: | :--------: |
+| [78. Subsets](https://leetcode.com/problems/subsets/) (All possible subsets given unique elements)                             | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| [90. Subsets II](https://leetcode.com/problems/subsets-ii/) (Given duplicates)                                                 | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| [39. Combination Sum](https://leetcode.com/problems/combination-sum/description/) (Combination sum = target, unlimited use)    | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| [39. Combination Sum II](https://leetcode.com/problems/combination-sum-ii/description/) (Used once)                            | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| [39. Combination Sum III](https://leetcode.com/problems/combination-sum-iii/description/) (Used once with 1-9, with n numbers) | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| <h2>Permutation</h2>                                                                                                           |                                                                   |      |          |      |            |
+| [46. Permutations](https://leetcode.com/problems/permutations/description/)                                                    | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| [47. Permutations II](https://leetcode.com/problems/permutations-ii/description/)                                              | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |      |          |      |            |
+| [31. Next Permutation](https://leetcode.com/problems/next-permutation/description/)                                            | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |      |          |      |            |
+| <h2>Word </h2>                                                                                                                 |                                                                   |      |          |      |            |
+| [79. Word Search](https://leetcode.com/problems/word-search/description/) (DFS find the word)                                  | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| [79. Word Search II](https://leetcode.com/problems/word-search-ii/description/) (DFS find the words with Trie)                 | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |      |            |
+| <h2>String</h2>                                                                                                                |                                                                   |      |          |      |            |
+| [131. Palindrome Partitioning](https://leetcode.com/problems/palindrome-partitioning/description/)                             | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| [17. Letter Combinations of a Phone Number]()                                                                                  | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |    ✔    |      |            |
+| <h2></h2>                                                                                                                      |                                                                   |      |          |      |            |
+| []()                                                                                                                           |  <span style={{fontWeight: 'bold', color: 'green' }}>Easy</span>  |  ✅  |          |      |            |
+| []()                                                                                                                           | <span style={{fontWeight: 'bold', color: 'orange'}}>Medium</span> |  ✅  |          |      |            |
+| []()                                                                                                                           |  <span style={{fontWeight: 'bold', color: 'red'   }}>Hard</span>  |  ✅  |          |      |            |
